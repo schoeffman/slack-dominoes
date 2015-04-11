@@ -1,0 +1,33 @@
+{
+  "name": "Slack'n Domino's Tracking Notify",
+  "version": "1.1.0",
+  "description":"Pushes a notification to a slack channel of choice when on the Domino's Pizza Tracking Desktop page. This Plugin was built for Dominos.ca",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [{
+    "js": ["contentscript.js"],
+    "matches": [
+      "https://order.dominos.ca/*",
+      "http://order.dominos.ca/*"
+    ]
+  }],
+  "permissions" : [
+    "declarativeContent",
+    "storage",
+    "tabs"
+  ],
+  "icons" : {
+    "48" : "48.png",
+    "128" : "128.png"
+  },
+  "browser_action": {
+      "default_icon": { "19": "19.png", "38": "38.png" },
+      "default_title": "That's the tool tip",
+      "default_popup": "popup.html"
+  },
+  "web_accessible_resources": ["script.js"],
+  "homepage_url": "http://schoeffman.com/",
+  "manifest_version": 2
+}
