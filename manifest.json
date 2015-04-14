@@ -1,7 +1,7 @@
 {
   "name": "Slack'n Domino's Tracking Notify",
-  "version": "1.1.0",
-  "description":"Pushes a notification to a slack channel of choice when on the Domino's Pizza Tracking Desktop page. This Plugin was built for Dominos.ca",
+  "version": "1.1.1",
+  "description":"Pushes notification to a slack channel of choice when on the Domino's Canada Pizza Tracking Desktop page.",
   "content_scripts": [{
     "js": ["contentscript.js"],
     "matches": [
