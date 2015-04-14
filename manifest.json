@@ -14,8 +14,8 @@
     "declarativeContent",
     "storage",
     "tabs",
-    "http://order.dominos.ca",
-    "https://order.dominos.ca"
+    "http://order.dominos.ca/",
+    "https://order.dominos.ca/"
   ],
   "icons" : {
     "48" : "48.png",
