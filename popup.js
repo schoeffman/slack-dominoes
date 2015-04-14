@@ -28,20 +28,32 @@ function saveChanges() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
+   var link  = document.getElementById('save');
+   var status = document.getElementById('status');
+   var regex = new RegExp(/^https:\/\/order\.dominos\.ca\/en\/pages\/order\/confirmation.*$/);
    chrome.storage.sync.get(load);
+   
+   chrome.tabs.getAllInWindow(null, function(tabs){
 
-    var link = document.getElementById('save');
+     for (var i = 0; i < tabs.length; i++) {
+
+        var currentUrl = tabs[i].url;
+
+        if(regex.test(currentUrl)) {
+          document.getElementById("status").innerHTML = "Active";
+          document.getElementById("status").className = "active";
+        }
+      }
+    });
 
     // onClick's logic below:
     link.addEventListener('click', function() {
-
       saveChanges();
     });
+
 });
 
 function load(data){
-
-    
     if(data) {
       document.getElementById("token").value = data.token;
       document.getElementById("channel").value = data.channel;

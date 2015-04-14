@@ -1,0 +1,124 @@
+      body {
+        height: 361px;
+        width: 290px;
+        text-align:center;
+        margin:0px;
+        padding: 0px;
+      }
+
+      div#background {
+        height: 100%;
+        width: 100%;
+        display: block;
+        position: relative;
+        margin:0px;
+        padding: 0px;
+      }
+
+      div#background::after {
+        content: "";
+        background-image: url("plaid.png");
+        opacity: 0.3;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;   
+      }
+
+      h1 {
+        font-size:27px;
+        margin-top:0px;
+        padding-top: 8px;
+        margin: 0px;
+      }
+
+      #title2 {
+        padding:0px;
+      }
+      
+      a { 
+        color:#FF9715;
+      }
+
+      a:hover {
+        color:#454545;
+      }
+
+
+      .orange-flat-button {
+        float:left;
+        margin: 7px 0px 0px 15px;
+        position: relative;
+        vertical-align: top;
+        width: 259px;
+        height: 50px;
+        padding: 0;
+        font-size: 22px;
+        color: white;
+        text-align: center;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+        background: #f39c12;
+        border: 0;
+        border-bottom: 2px solid #e8930c;
+        cursor: pointer;
+        -webkit-box-shadow: 0px 1px 3px 2px #e56600;
+        box-shadow: 0px 1px 3px 2px #e56600
+      }
+
+      .orange-flat-button:active {
+        top: 1px;
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+
+      .inputs {
+        border: solid 1px #000;
+        float: left;
+        height: 16px;
+        width: 236px;
+        padding: 10px;
+        margin: 8px 16px;
+      }
+
+      .info {
+        width:259px;
+        margin: 0px;
+        padding: 8px 0px 0px 15px;
+        color: #000;
+        float: left;
+        text-align:left;
+      }
+
+
+      .active {
+        background: #50BA9D;
+      }
+
+      .inactive {
+        background: #6C62C2;
+      }
+
+      #status {
+        float:left;
+        font-size: 18px;
+        width: 259px;
+        margin: 10px 0 0 14px;
+        color: #fff;
+      }
+      
+      .help {
+        float:left;
+        font-size:10px;
+        margin: -3px 0px 0px 16px;
+      }
+
+      #footer {
+        float:left;
+        font-size:10px;
+        margin: 0px 0px 0px 16px;
+      }
+
+      #leaf {}
