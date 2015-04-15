@@ -6,7 +6,7 @@ function load(data) {
 
   var actualCode = '(' + function(_token, _channel) {
     
-    var pizzaTracker = {
+  var pizzaTracker = {
       prevState : null,
       channel   : null, 
       token     : null,
@@ -27,9 +27,9 @@ function load(data) {
           console.log('Slack-Dominoes Content Script Error => ', err); 
         }
      
-        if (state != prevState) {
+        if (state != pizzaTracker.prevState) {
           
-          prevState = state;
+          pizzaTracker.prevState = state;
      
           if(state == "1") {
               message = "Order%20Placed";
@@ -44,9 +44,10 @@ function load(data) {
           } else {
              message = "Unknown%20State";
             }
-          }
+          
+          pizzaTracker.notify(message);
+        }
      
-          notify(message);
       }
     }; //end pizzaTracker
 
@@ -54,7 +55,7 @@ function load(data) {
     pizzaTracker.token   = _token;
     pizzaTracker.channel = _channel;
 
-    setInterval(checkStatus, 2000);  
+    setInterval(pizzaTracker.checkStatus, 2000);  
     
   } + ')(' + JSON.stringify(data.token) + ',' + JSON.stringify(data.channel) + ');';
 
