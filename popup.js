@@ -55,7 +55,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function load(data){
     if(data) {
-      document.getElementById("token").value = data.token;
-      document.getElementById("channel").value = data.channel;
+
+      if(typeof data.token !== 'undefined'){
+        document.getElementById("token").value = data.token;
+      }
+
+      if(typeof data.channel !== 'undefined'){
+        document.getElementById("channel").value = data.channel;
+      }
     }
 }
