@@ -4,24 +4,19 @@
 
 function load(data) {
 
- var token = data.token;
- var channel = data.channel; 
-
   var actualCode = '(' + function(_token, _channel) {
     
-     var _prevState = null;
-     var channel = _channel; 
-     var token = _token;
-
-
-    function notify(state, token, channel) {
+    var pizzaTracker = {
+      prevState : null,
+      channel   : channel, 
+      token     : token,
+      notify    : function(state) {
         var n = new XMLHttpRequest();
-        n.open("POST", "https://slack.com/api/chat.postMessage?token=" + token + "&channel=%23" + channel + "&text=" + state + "&username=Domino's%20Notify&icon_url=http%3A%2F%2Fcdn.marketplaceimages.windowsphone.com%2Fv8%2Fimages%2F81c41161-1148-4f50-bdda-dd681d2a4b1d%3FimageType%3Dws_icon_large&pretty=1");
+        n.open("POST", "https://slack.com/api/chat.postMessage?token=" + this.token + "&channel=%23" + this.channel + "&text=" + state + "&username=Domino's%20Notify&icon_url=http%3A%2F%2Fcdn.marketplaceimages.windowsphone.com%2Fv8%2Fimages%2F81c41161-1148-4f50-bdda-dd681d2a4b1d%3FimageType%3Dws_icon_large&pretty=1");
         n.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         n.send();
-    }
-
-    function checkStatus(token, channel) {
+    },
+      checkStatus : function() {
 
         var state = '';
 
@@ -30,11 +25,10 @@ function load(data) {
         } catch(err) {
           console.log('Slack-Dominoes Content Script Error => ', err); 
         }
-
      
-        if (state != _prevState) {
+        if (state != prevState) {
           
-          _prevState = state;
+          prevState = state;
      
           if(state == "1") {
               message = "Order%20Placed";
@@ -52,11 +46,16 @@ function load(data) {
           }
      
           notify(message, token, channel);
-    }
+      }
+    }; //end pizzaTracker
 
-    setInterval(checkStatus(token, channel), 2000);  
+    //Store the variables
+    pizzaTracker.token   = _token;
+    pizzaTracker.channel = _channel;
 
-  } + ')(' + JSON.stringify(token) + ',' + JSON.stringify(channel) + ');';
+    setInterval(checkStatus, 2000);  
+    
+  } + ')(' + JSON.stringify(data.token) + ',' + JSON.stringify(data.channel) + ');';
 
   var script = document.createElement('script');
   script.textContent = actualCode;
